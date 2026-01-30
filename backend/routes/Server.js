@@ -5,12 +5,12 @@ const app = express();
 const cors = require("cors");
 const jwt = require("jsonwebtoken")
 
-const cookieParser = require("cookie-parser")
+const cookieParser = require("cookie-parser");
+// const { useRef } = require("react");
 app.use(cookieParser());
 
-
 app.use(cors({
-  origin: "http://localhost:3000", 
+    origin: "http://localhost:3000", 
   credentials: true
 }));
 require("dotenv").config();
@@ -32,7 +32,7 @@ app.post("/register", async (req,res) => {
             email : req.body.email,
             password : req.body.password
         })
-
+        
         await newuser.save()
     } catch (error) {
         res.send(601)
@@ -44,61 +44,64 @@ app.post("/register", async (req,res) => {
 app.post("/login" , async (req,res)=>{
     
     try {
-       const loginuser = await User.findOne({email:req.body.email})
-       // Access Token 
-       
-       if (loginuser && (req.body.password === loginuser.password)) {
-           const accessToken = jwt.sign(
+        const loginuser = await User.findOne({email:req.body.email})
+        // Access Token 
+        
+        if (loginuser && (req.body.password === loginuser.password)) {
+            const accessToken = jwt.sign(
            {
                userId: loginuser._id,
                email: loginuser.email
-           },
-           process.env.JWT_SECRET,
-           {
-               expiresIn: "1m"
-           }
-           );
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "30m"
+            }
+        );
         //    console.log(accessToken)
-           res.cookie("token", accessToken, {
-                httpOnly: true,
-                sameSite: "lax",
-                secure: false
-            });
-
-           res.status(200).send(loginuser);
-           
-           console.log("User succesfully logged in");
-       }
-
-       else {
+        res.cookie("token", accessToken, {
+            httpOnly: true,
+            sameSite: "lax",
+            secure: false
+        });
+        
+        res.status(200).send(loginuser);
+        
+        console.log("User succesfully logged in");
+    }
+    
+    else {
         console.log("Invalid Credentials")
         res.status(401)
         res.send()
-       }
-
-    } catch (error) {
-        console.log("Failed to login : ", error.message)
+    }
+    
+} catch (error) {
+    console.log("Failed to login : ", error.message)
     }
 })
-
-app.post("/refresh", (req, res) => {
-
+let count = 0;
+app.post("/refresh", (req, res) => {    
+    
     try {
         const token = req.cookies.token; 
-
-        if (!token) {
-        return res.status(401).json({ message: "Unauthorized" });
+        
+        if (!token && count != 0) {
+            count += 1;
+            return res.status(401).json({ message: "Unauthorized" });
         }
-
+        
         const dc = jwt.verify(token, process.env.JWT_SECRET);
         
         return res.status(200).json({dc});
-
+        
     }
     catch (error) {
-        console.log("something went wrong : " , error.message)
-        return res.status(401).json({ message: "Invalid token" });
-  }
+        if(count !== 0){
+            console.log("something went wrong : " , error.message)
+            return res.status(401).json({ message: "Invalid token" });
+        }
+    }
 });
 
 
