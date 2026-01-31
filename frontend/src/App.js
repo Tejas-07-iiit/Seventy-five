@@ -1,7 +1,7 @@
 import './App.css';
 import Register from './component/Register';
 import axios from 'axios';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import Home from "./component/Home"
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
@@ -10,15 +10,14 @@ import  {login}  from "./Redux_store/Auth";
 function App() {
     const dispatch = useDispatch();
 
-    const auth = useSelector((state)=>state.auth.isAuth)
-    const initial = 0;
+    let auth = useSelector((state)=>state.auth.isAuth)
     
     useEffect(()=>{
       // check tocken
       const Refresh = async () => {
         
         try {
-          const response = await axios.post("http://localhost:5000/refresh",{},
+          const response = await axios.post("http://localhost:5000/api/refresh",{},
             {
               withCredentials : true
             }
@@ -32,7 +31,7 @@ function App() {
         }
       }      
       Refresh();
-      
+
     },[auth])
     
     return (

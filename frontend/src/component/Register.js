@@ -37,11 +37,11 @@ const Register = () => {
         }
     }
 
-    const saveuser =async (e) => {
+    const saveuser = async (e) => {
         e.preventDefault();
         try {
             if(isrequired() && (password === cpassword)) {
-                await axios.post("http://localhost:5000/register", {
+                await axios.post("http://localhost:5000/api/register", {
                     f_name,
                     l_name,
                     email,

@@ -10,38 +10,46 @@ router.post("/Attendance" , Auth , async (req,res)=>{
     try {
         const userid = req.user.userId 
 
-        console.log(userid)
+        // console.log(userid)
         
-        const {scode , present , absent} = req.body
-        const subject_id = await Subject.findOne({scode : scode})
-        
-        const user = await Attendance.findOne({userid : userid , scode : subject_id._id})
+        const {scode , present , absent} = req.body;
+        const subject = await Subject.findOne({scode : scode});
 
-        console.log(user)
+        // console.log(subject)
+        const subject_id = subject._id;
 
-        const pday = user.pday; 
-        const aday = user.aday; 
-        const tday = user.tday; 
+        // console.log(userid , subject_id)
 
+        const user = await Attendance.findOne({userid : userid , scode : subject_id});
+
+        let pday = user.pday ; 
+        let aday = user.aday ; 
+        let tday = user.tday+1; 
+
+        let ack;
         if(present){
-            const ack = await Attendance.updateOne(
-                {_id : userid , scode : subject_id._id} , 
+            // console.log("i am in")
+            pday += 1
+            ack = await Attendance.updateOne(
+                {_id : user._id}, 
                 {$set :{
-                    pday : pday += 1,
-                    tday : tday += 1
+                    pday : pday,
+                    tday : tday
                 }})
             }
+        
         if(absent) {
-            const ack = await Attendance.updateOne(
-                {_id : userid , scode : subject_id._id} , 
+            aday += 1
+            ack = await Attendance.updateOne(
+                {_id : user._id} , 
                 {$set :{
-                    aday : aday += 1,
-                    tday : tday += 1
+                    aday : aday,
+                    tday : tday 
             }})
         }
 
         if(ack.acknowledged){
-            res.status(200).json({})
+            res.status(200).json({pday,aday,tday})
         }
         else {
             console.log("Please Try Again")
