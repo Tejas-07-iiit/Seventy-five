@@ -177,3 +177,29 @@ body {
 .btn2:active {
     transform: scale(0.96);
 }
+
+.modal_pop {
+    border: 1px solid black;
+    border-radius: 12px;
+    align-items: center;
+    height: 350px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f3ffae;
+}
+
+.formItem {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal_pop input {
+    width: 300px;
+}
+
+.modal_pop .title {
+    color: black;
+    font-size: 30px;
+}

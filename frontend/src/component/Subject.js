@@ -71,13 +71,39 @@ const Subject = () => {
                         </div>
                         )
                     }
-                <button onClick={add} className="btn2">&#43; Add Subject</button>    
 
-                </div>
+                <button onClick={add} className="btn2">&#43; Add Subject</button>    
             </div>
+
+                    {/* <div className="modal_pop"> */}
+                        <form className="modal_pop">
+                            <div className="formItem title">
+                                Subject Detail
+                            </div>
+                            <div className="formItem">
+                                <label className="name">Subject Name</label>
+                                <input type="name"/>
+                            </div>
+                            <div className="formItem">
+                                <label className="name">Subject Code</label>
+                                <input type="name"/>
+                            </div>
+                            <div className="formItem">
+                                <label className="name">Credit</label>
+                                <input type="name"/>
+                            </div>
+                            <div className="formItem">
+                                <label className="name">Faculty Name</label>
+                                <input type="name"/>
+                            </div>
+                            <button type="submit" className="btn3">Add</button>
+                        </form>
+                </div>
+
+                // </div>
         }
     </>
   )
 }
 
-export default Subject
+export default Subject;
