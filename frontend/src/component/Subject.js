@@ -3,12 +3,12 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 const Subject = () => {
+    const [modal , setmodal] = useState(false)
     const [sub , setsub] = useState()
     const component = useSelector((state) => state.comp.comp)
 
     const add = async (e) => {
         e.preventDefault();
-
         try {
             const addsubject = await axios.post("http://localhost:5000/api/addsubject",{ 
 
@@ -72,10 +72,10 @@ const Subject = () => {
                         )
                     }
 
-                <button onClick={add} className="btn2">&#43; Add Subject</button>    
+                <button onClick={() => setmodal(true)} className="btn2">&#43; Add Subject</button>    
             </div>
 
-                    {/* <div className="modal_pop"> */}
+                    {modal &&
                         <form className="modal_pop">
                             <div className="formItem title">
                                 Subject Detail
@@ -96,9 +96,13 @@ const Subject = () => {
                                 <label className="name">Faculty Name</label>
                                 <input type="name"/>
                             </div>
-                            <button type="submit" className="btn3">Add</button>
+                            <div className="btns">
+                                <button onClick={add} type="submit" className="btn3">Add</button>
+                                <button onClick={add} type="submit" className="btn3">Cancel</button>
+                            </div>
                         </form>
-                </div>
+                        }
+                </div> 
 
                 // </div>
         }
