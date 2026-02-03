@@ -82,7 +82,6 @@ const Subject = () => {
                 withCredentials: true
             }
         );
-
         if (dresponse.status === 200) {
             console.log("Subject Deleted");
         }
