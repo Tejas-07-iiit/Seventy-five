@@ -37,6 +37,9 @@ app.use("/api/",  require("./routes/Attendance"))
 // For Fetching All Subjects
 app.use("/api/",require("./routes/Allsubject"))
 
-app.listen(process.env.PORT ,"0.0.0.0", ()=> {
+// Delete Subject 
+app.use("/api/" , require("./routes/DeleteSubejct"))
+
+app.listen(5000,"0.0.0.0" , ()=> {
   console.log("Your Server is running on port  : " , process.env.PORT)
 })

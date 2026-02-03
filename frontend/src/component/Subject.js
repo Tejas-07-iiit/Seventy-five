@@ -72,6 +72,25 @@ const Subject = () => {
             console.log("Not able to fetch Subjects : " , error.message)
         }
     } 
+    
+   const dlt = async (scode) => {
+    try {
+        const dresponse = await axios.delete(
+            "http://localhost:5000/api/dsubject",
+            {
+                data: { scode },   
+                withCredentials: true
+            }
+        );
+
+        if (dresponse.status === 200) {
+            console.log("Subject Deleted");
+        }
+    } catch (error) {
+        console.log("Something Went Wrong:", error);
+    }
+};
+
 
     useEffect(()=>{
         show()
@@ -101,6 +120,9 @@ const Subject = () => {
                             </div>
                             <div className="facultyname">
                                 Faculty : {`${item.facultyname}`} 
+                            </div>
+                            <div className="delete">
+                                <button onClick={()=>dlt(scode)}>Delte</button>
                             </div>
                         </div>
                         )

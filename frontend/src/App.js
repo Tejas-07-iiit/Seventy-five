@@ -26,7 +26,6 @@ function App() {
             }
           )
           if(response.status === 200) {
-            // console.log(response.data.dc)
             dispatch(login(response.data.dc))  
           }
         }

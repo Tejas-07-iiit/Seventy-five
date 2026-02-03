@@ -22,7 +22,7 @@ const Login = (props) => {
             e.preventDefault();
             const response = await axios.post("http://localhost:5000/api/login",{
                 email,
-                password
+                password    
             },
             {withCredentials:true})
             
