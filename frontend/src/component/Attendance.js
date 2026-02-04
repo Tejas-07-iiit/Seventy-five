@@ -12,8 +12,16 @@ const Attendance = () => {
     const [percent , setpercent] = useState();
     const [present,setpresent] = useState();
     const [absent , setabsent] = useState();
-    const [att , setatt] = useState();
+    const [att , setatt] = useState(null);
 
+    
+    useEffect(()=>{
+      if(att) {
+        console.log(att)
+      }
+    },[att])  
+    
+    
     // This Function Fetch All attendence
     const atd = async () => {
       try {
@@ -29,9 +37,6 @@ const Attendance = () => {
       }
     }
 
-    const calc = async () => {
-      console.log(att)
-    }
     
     // This Function Fetch All subject
     const sub = async () => {
