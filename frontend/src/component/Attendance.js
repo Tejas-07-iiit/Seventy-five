@@ -69,8 +69,6 @@ const Attendance = () => {
         }
     }, [att, subject]);
 
-
-
     // This function Can Update Attendance
     const updateAttendance =async (a,scode) => {
       try {
@@ -138,11 +136,11 @@ const Attendance = () => {
                 </div>
 
                 <div className="bbox">
-                  <div className="pbtn">
+                  <div className="btn5">
                     <button onClick={()=>updateAttendance("present" ,item.scode)}>Present</button>
                   </div>
 
-                  <div className="abtn">
+                  <div className="btn5">
                     <button onClick={()=>{updateAttendance("absent" ,item.scode)}}>Absent</button>
                   </div>
 

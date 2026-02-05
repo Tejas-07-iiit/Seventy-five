@@ -378,5 +378,15 @@ body {
 
 .percent {
     position: absolute;
-    right: 156px;
+    right: 200px;
+}
+
+.attendance .btn5 button {
+    height: 37px;
+    background-color: #c4d4f9;
+    border-radius: 12px;
+    width: 80px;
+    outline: none;
+    border: 1px solid black;
+    color: #000000;
 }
