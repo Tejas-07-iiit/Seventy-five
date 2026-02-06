@@ -376,26 +376,40 @@ body {
     color: #8FA3BF;
 }
 
-.percent {
-    position: absolute;
-    right: 200px;
-}
 
 .attendance .btn5 button {
+    position: relative;
     height: 37px;
     background-color: #c4d4f9;
     border-radius: 12px;
-    width: 80px;
+    width: 90px;
     outline: none;
     border: 1px solid black;
     color: #000000;
     transition: transform 0.1s ease-in;
 }
 
-.attendance .btn5 button:hover {
-    box-shadow: 0px 0px 22px 3px #7dd4fc8f;
-}
-
 .btn5 button:active {
     transform: scale(0.9);
+}
+
+.status {
+    height: 30px;
+    width: 400px;
+    border: 1px solid black;
+}
+
+.percent {
+    position: absolute;
+    right: 240px;
+    width: 200px;
+    border: 2px solid #4FC3F7;
+    height: 30px;
+    border-radius: 12px;
+}
+.percent pre{
+    color: #EAF6FF;
+    position: absolute;
+    top: 3px;
+    left: 8px;
 }
