@@ -9,9 +9,6 @@ const Attendance = () => {
 
     const [subject,setsub] = useState();
     const [reload , setload] = useState(false);
-    const [percent , setpercent] = useState();
-    const [present,setpresent] = useState();
-    const [absent , setabsent] = useState();
     const [att , setatt] = useState();
     const [fdata , setfdata] = useState([]);
     
@@ -55,7 +52,7 @@ const Attendance = () => {
     useEffect(()=>{
       sub()
       atd()
-    },[])
+    },[reload])
 
     useEffect(() => {
         if (att && subject) {
@@ -83,7 +80,7 @@ const Attendance = () => {
           absent = true;
         }
 
-        const response = await axios.post("http://localhost:5000/api/Attendance" , {
+        await axios.post("http://localhost:5000/api/Attendance" , {
           scode,
           present,
           absent
@@ -131,7 +128,7 @@ const Attendance = () => {
 
                 <div className="percent">
                   {(item.pday !== 0 || item.tday !== 0) ?
-                    (item.pday/item.tday) * 100 + "%" : '0%'
+                    ((item.pday/item.tday) * 100).toFixed(2) + "%" : '0%'
                   }
                 </div>
 
