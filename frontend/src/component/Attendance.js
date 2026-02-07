@@ -122,7 +122,7 @@ import Fiill from "./Fill";
                         <div className="fname">{item.facultyname}</div>
                     </div>
 
-                    <Fiill content={((item.pday/item.tday)*100).toFixed(2)} />
+                    <Fiill content={(item.tday !== 0 || item.pday !== 0) ? ((item.pday/item.tday)*100).toFixed(2) : 0} />
 
                     <div className="bbox">
                         <div className="btn5">
