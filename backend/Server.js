@@ -43,6 +43,9 @@ app.use("/api/" , require("./routes/DeleteSubejct"))
 // For Fetching All Attendance
 app.use("/api/" , require("./routes/Allattendance"))
 
+// Edit initial Attendance
+app.use("/api/" , require("./routes/EditAttendance"))
+
 app.listen(5000,"0.0.0.0" , ()=> {
   console.log("Your Server is running on port  : " , process.env.PORT)
 })

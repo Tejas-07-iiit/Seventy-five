@@ -3,7 +3,7 @@ import comp from "../Redux_store/Comp";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarCheck, faCalendarXmark} from "@fortawesome/free-solid-svg-icons";
+import { faCalendarCheck, faCalendarXmark ,faPenToSquare} from "@fortawesome/free-solid-svg-icons";
 import Fiill from "./Fill";
 
     const Attendance = () => {
@@ -133,8 +133,10 @@ import Fiill from "./Fill";
                         <div className="btn5">
                             <button onClick={() => {updateAttendance("absent",item.scode,item.pday,item.aday,item.tday);}}><FontAwesomeIcon icon={faCalendarXmark} /> Absent</button>
                         </div>
-
                     </div>
+                    <button className="edit"><FontAwesomeIcon icon={faPenToSquare} /></button>
+
+    
                 </div>
                 ))}
             </div>

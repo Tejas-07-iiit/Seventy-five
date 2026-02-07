@@ -1,5 +1,5 @@
 const express = require("express")
-const router = express()
+const router = express.Router()
 const Attendance = require("../models/Attendance.model")
 const Subject = require("../models/subject.model")
 const Auth = require("../Middleware/Auth")

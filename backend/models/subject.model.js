@@ -31,6 +31,6 @@ const Subject = new Schema({
     facultyname : {
         type : String,
     }
-})
+} , {timestamps:true})
 
 module.exports = new model('Subject' , Subject)

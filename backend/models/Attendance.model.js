@@ -35,6 +35,6 @@ const Attendance = new Schema({
         required : true
     }
 
-})
+} , {timestamps:true})
 
 module.exports = new model("Attendance" , Attendance)
