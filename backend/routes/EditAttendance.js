@@ -7,7 +7,7 @@ router.put("/editatt" , Auth , async (req,res) => {
     
     try {
         const data = req.body
-        
+        console.log(data)
         const response = await Attendance.updateOne({
             scode : data.scode,
             userid : req.user.userId

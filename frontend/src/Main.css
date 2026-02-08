@@ -341,17 +341,16 @@ body {
 }
 
 .AttCard {
-    margin: auto;
-    position: relative;
     height: 89px;
+    position: relative;
     align-items: center;
-    margin-top: 19px;
     border: 1px solid #a2c9ff;
     display: flex;
     gap: 20px;
-    width: 90%;
+    width: 100%;
     color: white;
     border-radius: 12px;
+    margin-top: 19px;
 }
 
 .bbox {
@@ -375,7 +374,6 @@ body {
 .dtatt .fname {
     color: #8FA3BF;
 }
-
 
 .attendance .btn5 button {
     position: relative;
@@ -412,4 +410,115 @@ body {
     position: absolute;
     top: 3px;
     left: 8px;
+}
+
+.withmenu {
+    margin: auto;
+    width: 90%;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.editDetail {
+    background: rgba(30, 41, 59, 0.7); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr; /* Better balance than flex */
+    gap: 40px;
+    margin: 30px auto;
+    width: 1000px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.edit form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.presentd, .totald {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit label {
+    color: #38BDF8; 
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.edit input {
+    background: #0F172A;
+    border: 2px solid #334155;
+    border-radius: 12px;
+    padding: 14px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.edit input:focus {
+    border-color: #38BDF8;
+    background: #1E293B;
+    outline: none;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+
+.btn-primary {
+    background: linear-gradient(90deg, #5b327e, #818CF8); 
+    color: #0F172A;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.9);
+}
+
+.detail {
+    background: linear-gradient(145deg, #1E293B, #0F172A);
+    border-radius: 16px;
+    display: flex;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    position: relative;
+}
+
+.detail .dates {
+    margin-top: 8px;
+    position: relative;
+    background-color: #ffffffc4;
+    border: 1px solid black;
+    border-radius: 12px;
+    display: flex;
+    height: 30px;
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2px;
+    padding-left: 10px;
+    gap: 20px;
+}
+
+.detail .dates button {
+    all: unset;
+    position: absolute;
+    right: 10px;
 }

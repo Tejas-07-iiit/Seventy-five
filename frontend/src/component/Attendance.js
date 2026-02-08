@@ -1,19 +1,23 @@
 import axios from "axios";
 import comp from "../Redux_store/Comp";
-import { useSelector } from "react-redux";
+import {setEdit} from "../Redux_store/Attedit"
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarCheck, faCalendarXmark ,faPenToSquare} from "@fortawesome/free-solid-svg-icons";
-import Fiill from "./Fill";
+import Fill from "./Fill";
+import EditAttendance from "./EditAttendance";
 
     const Attendance = () => {
     const component = useSelector((state) => state.comp.comp);
+    const edit = useSelector((state)=>state.edit.edit)
+    const dispatch = useDispatch()
 
     const [subject, setsub] = useState();
     const [reload, setload] = useState(false);
     const [att, setatt] = useState();
     const [fdata, setfdata] = useState([]);
-
+    
     // This Function Fetch All attendence
     const atd = async () => {
         try {
@@ -105,6 +109,15 @@ import Fiill from "./Fill";
         }
     };
 
+    const open = (index) => {
+        if(edit != -1) {
+            dispatch(setEdit(-1))
+        }
+        else {
+            dispatch(setEdit(index))
+        }
+    }
+
     return (
         <>
         {component === "Attendance" && (
@@ -114,31 +127,36 @@ import Fiill from "./Fill";
             <pre className="line" style={{ marginTop: "24px" }}></pre>
 
             {fdata &&
-                fdata.map((item) => (
-                <div key={item._id} className="AttCard">
+                
+                fdata.map((item,index) => (
+                <div key={item._id} className="withmenu">
+                    <div  className="AttCard">
 
-                    <div className="dtatt">
-                        <div className="sname">{item.sname}</div>
-                        <div className="fname">{item.facultyname}</div>
-                    </div>
-
-                    <Fiill content={(item.tday !== 0 || item.pday !== 0) ? ((item.pday/item.tday)*100).toFixed(2) : 0} />
-
-                    <div className="bbox">
-                        <div className="btn5">
-                            <button onClick={() =>
-                                updateAttendance("present",item.scode,item.pday,item.aday,item.tday)}><FontAwesomeIcon icon={faCalendarCheck} /> Present </button>
+                        <div className="dtatt">
+                            <div className="sname">{item.sname}</div>
+                            <div className="fname">{item.facultyname}</div>
                         </div>
 
-                        <div className="btn5">
-                            <button onClick={() => {updateAttendance("absent",item.scode,item.pday,item.aday,item.tday);}}><FontAwesomeIcon icon={faCalendarXmark} /> Absent</button>
-                        </div>
-                    </div>
-                    <button className="edit"><FontAwesomeIcon icon={faPenToSquare} /></button>
+                        <Fill content={(item.tday !== 0 || item.pday !== 0) ? ((item.pday/item.tday)*100).toFixed(2) : 0} />
 
-    
-                </div>
-                ))}
+                        <div className="bbox">
+                            <div className="btn5">
+                                <button onClick={() =>
+                                    updateAttendance("present",item.scode,item.pday,item.aday,item.tday)}><FontAwesomeIcon icon={faCalendarCheck} /> Present </button>
+                            </div>
+
+                            <div className="btn5">
+                                <button onClick={() => {updateAttendance("absent",item.scode,item.pday,item.aday,item.tday);}}><FontAwesomeIcon icon={faCalendarXmark} /> Absent</button>
+                            </div>
+                        </div>
+
+                        <button onClick={()=>open(index)}><FontAwesomeIcon icon={faPenToSquare} /></button>
+                    </div>
+                        {(edit === index) && <EditAttendance content={item} />}
+                </div>               
+                ))}  
+
+        
             </div>
         )}
         </>

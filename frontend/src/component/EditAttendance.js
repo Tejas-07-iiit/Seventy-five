@@ -1,55 +1,97 @@
-import axios from "axios"
+import axios, { all } from "axios"
+import { useDispatch } from "react-redux"
+import { setEdit } from "../Redux_store/Attedit"
 import { useState } from "react"
+import Alert from "./Alert"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
-const EditAttendance = () => {
+const EditAttendance = (props) => {
+  const dispatch = useDispatch()
+  const [date,setdate] = useState("date")
+  const [info,setinfo] = useState("info")
+  const [scode,setcode] = useState(props.content.scode)
+  const [preday , setpreday] = useState(props.content.pday)
+  const [today , setday] = useState(props.content.tday)
+  const [alt , setalert] = useState(false)
 
-  const [date,setdate] = useState()
-  const [info,setinfo] = useState()
+  const update = async (e) => {
+    e.preventDefault()
 
-  const update = async () => {
+    console.log(preday > today , preday , today)
+    if((parseInt(preday) > parseInt(today)) || (parseInt(preday)<0) || (parseInt(today)<0)) {
+      setalert(true);
+      setTimeout(() => {
+        setalert(false)
+      }, 1500);
+      return;
+    }
+    else {
+      setalert(false);
+    }
+
+    const aday = today - preday;
     try {
-      
       const response = await axios.put("http://localhost:5000/api/editatt" , {
-        scode : props.scode,
-        pday : props.pday,
-        tday : props.tday,
-        aday : tday-aday
+        scode : scode,
+        pday : preday,
+        tday : today,
+        aday : aday
       } , {
         withCredentials:true
       })
       if(response.ack) {
-        console.log("")
+        console.log("sdkfn")
       }
     } 
     catch (error) {
       console.log("Something Went Wrong : " , error.message)
     }
+    dispatch(setEdit(-1))
+    
+    setday(props.content.tday)
+    setpreday(props.content.pday)
+  } 
+  
+  const fetchdate = () => {
+    const date = new Date()
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    console.log(days[date.getDay()] , date.getDate() , months[date.getMonth()] , date.getFullYear())
+    const full_date = days[date.getDay()] + " - " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear();
+    console.log(full_date)
+
   }
+
+  fetchdate()
 
   return (
     <>
         <div className="editDetail">
           <div className="edit">
               <form>
+                {alt && <Alert message={"Please Enter Valid Value!"} />}
                   <div className="presentd">
-                    <label >Total Present Day</label>
-                    <input type="number"/>
+                    <label>Total Present Day</label>
+                    <input onChange={(e)=>setpreday(e.target.value)} defaultValue={props.content.pday} type="number"/>
                   </div>
                   <div className="totald">
-                    <label >Total Day</label>
-                    <input type="number" />
+                    <label>Total Day</label>
+                    <input onChange={(e)=>setday(e.target.value)} defaultValue={props.content.tday} type="number" />
                   </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                 
+                  <button onClick={update} type="submit" className="btn btn-primary">Submit</button>
                 </form>
           </div>
           <div className="detail">
-            <div className="lastupdate">
-              <div className="date">
+            <div className="dates">
+              <div className="ditem">
                 {info}
               </div>
-              <div className="date">
+              <div className="ditem">
                 {date}
               </div>
+              <button ><FontAwesomeIcon icon={faXmark} /></button>
             </div>
           </div>
         </div>
