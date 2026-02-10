@@ -33,7 +33,12 @@ const Attendance = new Schema({
         default : 0,
         type : Number,
         required : true
-    }
+    },
+
+    Atime : [{
+        att : String,
+        date : String
+    }]
 
 } , {timestamps:true})
 

@@ -52,18 +52,6 @@ const EditAttendance = (props) => {
     setday(props.content.tday)
     setpreday(props.content.pday)
   } 
-  
-  const fetchdate = () => {
-    const date = new Date()
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    console.log(days[date.getDay()] , date.getDate() , months[date.getMonth()] , date.getFullYear())
-    const full_date = days[date.getDay()] + " - " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear();
-    console.log(full_date)
-
-  }
-
-  fetchdate()
 
   return (
     <>

@@ -11,12 +11,12 @@ router.post("/Attendance" , Auth , async (req,res)=>{
         const userid = req.user.userId 
 
         // console.log(userid)
-        console.log(req.body)
-        const {scode , present , absent} = req.body;
-        // console.log(userid , subject_id)
+        // console.log(req.body)
+        const {scode , present , absent , date} = req.body;
+        console.log(userid , date)
 
         const user = await Attendance.findOne({userid : userid , scode : scode});
-
+        console.log(user)
         let pday = user.pday ; 
         let aday = user.aday ; 
         let tday = user.tday+1; 
@@ -27,22 +27,34 @@ router.post("/Attendance" , Auth , async (req,res)=>{
             pday += 1
             ack = await Attendance.updateOne(
                 {_id : user._id}, 
-                {$set :{
-                    pday : pday,
-                    tday : tday
-                }})
+                {
+                    $set :{
+                        pday : pday,
+                        tday : tday
+                },
+                    $push : {
+                        "Atime" : ["Present" , date]
+                    }
+                }
+            )
             }
         
         if(absent) {
             aday += 1
             ack = await Attendance.updateOne(
                 {_id : user._id} , 
-                {$set :{
-                    aday : aday,
-                    tday : tday 
-            }})
+                {
+                    $set :{
+                        aday : aday,
+                        tday : tday 
+                },
+                    $push : {
+                        Atime : ["Absent" , date]
+                    }
+                }
+        )
         }
-
+        // console.log(ack)
         if(ack.acknowledged){
             res.status(200).json({pday,aday,tday})
         }

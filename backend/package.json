@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "./Server",
-  "scripts": {
-    "start": "node ./Server",
-    "dev": "nodemon ./Server"
+    "scripts": {
+      "start": "node ./Server",
+      "dev": "nodemon ./Server"
   },
   "keywords": [],
   "author": "",
