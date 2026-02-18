@@ -1,6 +1,7 @@
 import axios, { all } from "axios"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { setEdit } from "../Redux_store/Attedit"
+import { setreload } from "../Redux_store/Reload"
 import { useEffect, useState } from "react"
 import Alert from "./Alert"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,9 +10,11 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons";
 const EditAttendance = (props) => {
   // console.log(props)
 
-  console.log(props.content.Atime)
+  // console.log(props.content.Atime)
+  const reload = useSelector((state)=>state.rel.rel)
 
   const dispatch = useDispatch()
+
   const [scode,setcode] = useState(props.content.scode)
   const [preday , setpreday] = useState(props.content.pday)
   const [today , setday] = useState(props.content.tday)
@@ -56,20 +59,6 @@ const EditAttendance = (props) => {
     setpreday(props.content.pday)
   } 
 
-  // const idate = () => {
-  //     try {
-  //       const di = props.content
-  //       // console.log(di)
-  //       setdate(di.Atime)
-  //       console.log(di.Atime)
-  //     } catch (error) {
-  //       console.log("Something Went Wrong : " , error.message)
-  //     }
-  // }
-  // useEffect(()=> {
-  //   idate()
-  // }, [])
-  
   return (
     <>
         <div className="editDetail">

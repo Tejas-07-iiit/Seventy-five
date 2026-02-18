@@ -343,13 +343,11 @@ body {
     height: 89px;
     position: relative;
     align-items: center;
-    border: 1px solid #a2c9ff;
     display: flex;
     gap: 20px;
     width: 100%;
     color: white;
-    border-radius: 12px;
-    margin-top: 19px;
+
 }
 
 .bbox {
@@ -413,10 +411,11 @@ body {
 
 .withmenu {
     margin: auto;
-    width: 90%;
+    width: 70%;
     padding: 0px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .editDetail {
@@ -551,4 +550,33 @@ body {
     font-weight: 500;
     right: 7px;
     top: 2px;
+}
+
+.editbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;        
+    background-color: transparent;
+    margin: 0;
+    color: white;
+    border: none;
+    line-height: 0;     
+    font-size: 23px;
+    padding-right: 9px;
+    padding-left: 4px;
+}
+
+.btnpattcard {
+    margin-top: 19px;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    border-radius: 12px;
+    border: 1px solid #a2c9ff;
+}
+
+.vline {
+    border-left: 2px solid #a2c9ff;
+    height: 89px;
 }

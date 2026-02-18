@@ -1,5 +1,6 @@
 import axios from "axios";
 import comp from "../Redux_store/Comp";
+import {setreload} from "../Redux_store/Reload"
 import {setEdit} from "../Redux_store/Attedit"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -12,16 +13,16 @@ const Attendance = () => {
 
     const component = useSelector((state) => state.comp.comp);
     const edit = useSelector((state)=>state.edit.edit)
+    const reload = useSelector((state)=>state.rel.rel)
+
     const dispatch = useDispatch()
+
     // const [date,setdate] = useState()
     const [subject, setsub] = useState();
-    const [reload, setload] = useState(false);
     const [att, setatt] = useState();
     const [fdata, setfdata] = useState([]);
-    
-        // date and time when attendance update
-        
-    
+    const [ind , setind] = useState(-1);
+
     // This Function Fetch All attendence
     const atd = async () => {
         try {
@@ -36,7 +37,7 @@ const Attendance = () => {
             setatt(adnc.data);
         }
         } catch (error) {
-        console.log(error.message);
+            console.log(error.message);
         }
     };
 
@@ -75,7 +76,7 @@ const Attendance = () => {
             setfdata(data);
             // console.log(data)
         }
-    }, [att, subject]);
+    }, [att, subject , reload]);
 
     // This function Can Update Attendance
     const updateAttendance = async (a, scode, pday, aday, tday) => {
@@ -104,23 +105,23 @@ const Attendance = () => {
 
         // console.log(response)
         if (reload) {
-            setload(false);
+            dispatch(setreload(false))
         } else {
-            setload(true);
+            dispatch(setreload(true))
         }
         } catch (error) {
             console.log("Something Went Wrong : ", error.message);
         }
     };
 
-    const open = (index) => {
+    useEffect(()=> {
         if(edit != -1) {
             dispatch(setEdit(-1))
         }
         else {
-            dispatch(setEdit(index))
-        }
+            dispatch(setEdit(ind))
     }
+    },[ind])
 
     return (
         <>
@@ -134,27 +135,29 @@ const Attendance = () => {
                 
                 fdata.map((item,index) => (
                 <div key={item._id} className="withmenu">
-                    <div  className="AttCard">
+                    <div className="btnpattcard"> 
+                        <div  className="AttCard">
 
-                        <div className="dtatt">
-                            <div className="sname">{item.sname}</div>
-                            <div className="fname">{item.facultyname}</div>
-                        </div>
-
-                        <Fill content={(item.tday !== 0 || item.pday !== 0) ? ((item.pday/item.tday)*100).toFixed(2) : 0} />
-
-                        <div className="bbox">
-                            <div className="btn5">
-                                <button onClick={() =>
-                                    updateAttendance("present",item.scode,item.pday,item.aday,item.tday)}><FontAwesomeIcon icon={faCalendarCheck} /> Present </button>
+                            <div className="dtatt">
+                                <div className="sname">{item.sname}</div>
+                                <div className="fname">{item.facultyname}</div>
                             </div>
 
-                            <div className="btn5">
-                                <button onClick={() => {updateAttendance("absent",item.scode,item.pday,item.aday,item.tday);}}><FontAwesomeIcon icon={faCalendarXmark} /> Absent</button>
+                            <Fill content={(item.tday !== 0 || item.pday !== 0) ? ((item.pday/item.tday)*100).toFixed(2) : 0} />
+
+                            <div className="bbox">
+                                <div className="btn5">
+                                    <button onClick={() =>
+                                        updateAttendance("present",item.scode,item.pday,item.aday,item.tday)}><FontAwesomeIcon icon={faCalendarCheck} /> Present </button>
+                                </div>
+
+                                <div className="btn5">
+                                    <button onClick={() => {updateAttendance("absent",item.scode,item.pday,item.aday,item.tday);}}><FontAwesomeIcon icon={faCalendarXmark} /> Absent</button>
+                                </div>
                             </div>
                         </div>
-
-                        <button onClick={()=>open(index)}><FontAwesomeIcon icon={faPenToSquare} /></button>
+                            <div class="vline"></div>
+                            <button className="editbtn" onClick={()=>{ind !== -1 ? setind(-1) : setind(index)}}><FontAwesomeIcon icon={faPenToSquare} /></button>
                     </div>
                         {(edit === index) && <EditAttendance content={item} />}
                 </div>               
