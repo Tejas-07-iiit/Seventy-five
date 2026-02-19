@@ -8,10 +8,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 const EditAttendance = (props) => {
-  // console.log(props)
 
+  
   // console.log(props.content.Atime)
-  const reload = useSelector((state)=>state.reload.reload)
+  const rel = useSelector((state)=>state.reload.reload)
 
   const dispatch = useDispatch()
 
@@ -20,6 +20,12 @@ const EditAttendance = (props) => {
   const [today , setday] = useState(props.content.tday)
   const [alt , setalert] = useState(false)
   const [date , setdate] = useState()
+  
+  useEffect(()=> {
+    console.log(props)
+    document.getElementById("presentday").value = props.content.pday
+    document.getElementById("totalday").value = props.content.tday
+  } , [rel])
 
   const update = async (e) => {
     e.preventDefault()
@@ -67,11 +73,11 @@ const EditAttendance = (props) => {
                 {alt && <Alert message={"Please Enter Valid Value!"} />}
                   <div className="presentd">
                     <label>Total Present Day</label>
-                    <input onChange={(e)=>setpreday(e.target.value)} defaultValue={props.content.pday} type="number"/>
+                    <input id="presentday" onChange={(e)=>setpreday(e.target.value)} type="number"/>
                   </div>
                   <div className="totald">
                     <label>Total Day</label>
-                    <input onChange={(e)=>setday(e.target.value)} defaultValue={props.content.tday} type="number" />
+                    <input id="totalday" onChange={(e)=>setday(e.target.value)} type="number" />
                   </div>
                  
                   <button onClick={update} type="submit" className="btn btn-primary">Submit</button>

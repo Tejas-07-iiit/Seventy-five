@@ -79,7 +79,16 @@ const Attendance = () => {
             setfdata(data);
             // console.log(data)
         }
-    }, [att, subject , rel]);
+    }, [att]);
+
+    useEffect(()=>{
+        if (rel) {
+            dispatch(reload(false))
+            
+        } else {
+            dispatch(reload(true))
+        }
+    },[fdata])
 
     // This function Can Update Attendance
     const updateAttendance = async (a, scode, pday, aday, tday) => {
