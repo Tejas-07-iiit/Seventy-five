@@ -42,7 +42,6 @@ const Attendance = () => {
             console.log(error.message);
         }
     };
-    
 
     // This Function Fetch All subject
     const sub = async () => {
