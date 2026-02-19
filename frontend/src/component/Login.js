@@ -3,12 +3,14 @@ import {useState} from "react"
 import Alert from "./Alert"
 import { useDispatch, useSelector } from "react-redux"
 import { login } from "../Redux_store/Auth"
+import {comp} from "../Redux_store/Comp"
 
 const Login = (props) => {
 
     const dispatch = useDispatch();
-    const comp = useSelector((state)=>state.comp.comp)
-    
+    const comp1 = useSelector((state)=>state.comp.comp)
+    // console("i am in login : " , comp)
+
     const [email , setemail] = useState()
     const [password , setpass] = useState()
     const [alert , setalert] = useState(false)
@@ -19,7 +21,7 @@ const Login = (props) => {
 
     const loginuser = async (e) => {
         try {
-            e.preventDefault();
+                e.preventDefault();
             const response = await axios.post("http://localhost:5000/api/login",{
                 email,
                 password    
@@ -28,6 +30,7 @@ const Login = (props) => {
             
             if(response.status === 200){
                 dispatch(login(response.data))
+                dispatch(comp("."))
             }
             else{   
                 console.log("Something Error ocurred in server");
@@ -45,7 +48,7 @@ const Login = (props) => {
   return (
     
     <>
-    {comp === "signin" && 
+    {comp1 === "signin" && 
     <div className="page">
         <div className="register">
                 <h1 className=  "text" style={{textAlign:"center" , fontSize:"35px"}}>Sign in</h1>

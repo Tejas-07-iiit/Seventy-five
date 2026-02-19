@@ -3,16 +3,18 @@ import { comp } from "../Redux_store/Comp"
 
 const Main = () => {
 
-    const comp = useSelector((state)=>state.comp.comp)
+    const comp1 = useSelector((state)=>state.comp.comp)
     const dispatch = useDispatch()
     
     const gotosignin = () => {
         dispatch(comp("signin"))
+        console.log(comp1)
     }
 
   return (
-
-   <div className="homePage">
+    <>
+    {comp1 === "homePage" &&
+    <div className="homePage">
 
       {/* HERO SECTION */}
       <section className="heroSection">
@@ -107,8 +109,10 @@ const Main = () => {
         <button className="ctaBtn">Go to Dashboard</button>
       </section>
 
-    </div>
-  )
+      </div>    
+    }
+    </>
+)
 }
 
 export default Main

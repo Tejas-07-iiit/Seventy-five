@@ -11,10 +11,12 @@ import Side_pannel from './component/Side_pannel';
 import Subject from './component/Subject';
 import Attendance from './component/Attendance';
 import Main from './component/Main';
+import Login from './component/Login';
 
 function App() {
     const dispatch = useDispatch();
-
+      
+    const comp = useSelector((state)=>state.comp.comp)
     let auth = useSelector((state)=>state.auth.isAuth)
     
     useEffect(()=>{
@@ -43,6 +45,7 @@ function App() {
       <>
         {auth ?  <Home/> : <Register/>}
         {!auth &&   <Main/>}
+        {comp === "signin" && <Login/>}
         <div className="mainbody">
          {auth && 
             <Side_pannel/> }
