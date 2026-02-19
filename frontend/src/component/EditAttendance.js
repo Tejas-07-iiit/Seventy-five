@@ -4,8 +4,6 @@ import { setEdit } from "../Redux_store/Attedit"
 import { reload } from "../Redux_store/Reload"
 import { useEffect, useState } from "react"
 import Alert from "./Alert"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 const EditAttendance = (props) => {
 
@@ -25,7 +23,7 @@ const EditAttendance = (props) => {
     console.log(props)
     document.getElementById("presentday").value = props.content.pday
     document.getElementById("totalday").value = props.content.tday
-  } , [rel])
+  } , [props])
 
   const update = async (e) => {
     e.preventDefault()

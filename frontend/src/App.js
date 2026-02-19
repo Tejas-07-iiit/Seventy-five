@@ -10,6 +10,7 @@ import  {login}  from "./Redux_store/Auth";
 import Side_pannel from './component/Side_pannel';
 import Subject from './component/Subject';
 import Attendance from './component/Attendance';
+import Main from './component/Main';
 
 function App() {
     const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function App() {
     return (
       <>
         {auth ?  <Home/> : <Register/>}
+        {!auth &&   <Main/>}
         <div className="mainbody">
          {auth && 
             <Side_pannel/> }

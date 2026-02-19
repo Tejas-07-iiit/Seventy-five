@@ -2,6 +2,7 @@ import { useState } from "react"
 import Login from "./Login"
 import axios from "axios"
 import Alert from "./Alert"
+import { useDispatch, useSelector } from "react-redux"
 
 const Register = () => {
     
@@ -11,7 +12,9 @@ const Register = () => {
     const [password , setpass] = useState();
     const [cpassword , setcpass] = useState();
 
-    const [page ,setpage] = useState("signup")
+    const comp = useSelector((state)=>state.comp.comp)
+    const dispatch = useDispatch()
+
     const [alert , setalert] = useState(false)
     
     const isrequired = () => {
@@ -26,7 +29,7 @@ const Register = () => {
     }
 
     const gotologin = () => {
-        setpage("signin")
+        dispatch(comp("signin"))
     }
 
     const reset1 = () => {
@@ -56,8 +59,7 @@ const Register = () => {
 
     return (
         <>
-            {page === "signin" && <Login page ={page} setpage = {setpage} />}
-            {page === "signup" && 
+        {comp === "signup" &&
             <div className="page">
 
                 <div className="register">

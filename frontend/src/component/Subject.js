@@ -21,6 +21,12 @@ const Subject = () => {
     const cancel = () => {
         setmodal(false)
     }
+
+    useEffect(()=> {
+        if(modal) {
+            document.body.style.filter =  `blur(${5}px)`
+        }
+    })
     
     const isrequired = async () => {
         if(!sname || !scode || !credit || !facultyname){
@@ -108,12 +114,12 @@ const Subject = () => {
     <>
         {
             component === "addsubject" && 
-            <div className="subject">
+            <div className="subject" >
                 <div className="pannel_title">
                     Subjects
                 </div>
                 <pre className="line" style={{marginTop:"24px"}}> </pre>
-                <div className="allsubject">
+                <div className="allsubject" onClick={cancel}>
                     {
                     sub.map((item) =>
                         <div key={item._id} className="subjectCard">
@@ -138,7 +144,7 @@ const Subject = () => {
             <div className="btnbox">
                 <button onClick={() => setmodal(true)} className="btn2">&#43; Add Subject</button>    
             </div>
-                <div className="add-subject-container">
+            <div className="add-subject-container" onClick={cancel}>
 
                     <p className="description">
                         Easily manage academic subjects by adding all essential details in one place.
@@ -159,9 +165,9 @@ const Subject = () => {
                 </div>
 
                     {modal &&
-                        <form className="modal_pop">
-                            <div className="formItem title">
-                                Subject Detail
+                        <form className="modal_pop" onClick={(e)=>e.stopPropagation()}>
+                            <div className="formItem title1">
+                                <p>Subject Detail</p>
                             </div>
                             {alert && <Alert message={"All fields are required"}/>} 
                             <div className="formItem">

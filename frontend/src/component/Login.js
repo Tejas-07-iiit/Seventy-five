@@ -1,19 +1,20 @@
 import axios from "axios"
 import {useState} from "react"
 import Alert from "./Alert"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { login } from "../Redux_store/Auth"
 
 const Login = (props) => {
 
     const dispatch = useDispatch();
-
+    const comp = useSelector((state)=>state.comp.comp)
+    
     const [email , setemail] = useState()
     const [password , setpass] = useState()
     const [alert , setalert] = useState(false)
     
     const gotosignup = ()=> {
-        props.setpage("signup")
+        dispatch(comp("signup"))
     }
 
     const loginuser = async (e) => {
@@ -44,7 +45,7 @@ const Login = (props) => {
   return (
     
     <>
-    {(props.page === "signin") && 
+    {comp === "signin" && 
     <div className="page">
         <div className="register">
                 <h1 className=  "text" style={{textAlign:"center" , fontSize:"35px"}}>Sign in</h1>

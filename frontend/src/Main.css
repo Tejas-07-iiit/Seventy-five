@@ -207,9 +207,9 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.formItem .title {
+.formItem p {
     color: #F8FAFC;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     text-align: left;
     border-bottom: 1px solid #334155;
@@ -579,4 +579,198 @@ body {
 .vline {
     border-left: 2px solid #a2c9ff;
     height: 89px;
+}
+
+.homePage {
+  background: linear-gradient(180deg, #050b1a, #071024);
+  color: white;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* HERO */
+.heroSection {
+  width: 100%;
+  padding: 60px 20px;
+  border-radius: 8px;
+
+  border-bottom-left-radius: 120px;
+  border-bottom-right-radius: 120px;
+
+  border-bottom: 1px solid black;
+  background: rgba(255, 255, 255, 0.03);
+  /* border: 1px solid rgba(255, 255, 255, 0.1); */
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.heroTitle span {
+  color: #2ea8ff;
+}
+
+.heroSubtitle {
+  margin-top: 15px;
+  font-size: 18px;
+  opacity: 0.8;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroButtons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.heroBtn {
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+.heroBtn.primary {
+  background: #2ea8ff;
+  color: white;
+}
+
+.heroBtn.primary:hover {
+  background: #118ae0;
+}
+
+.heroBtn.secondary {
+  background: transparent;
+  border: 1px solid #2ea8ff;
+  color: #2ea8ff;
+}
+
+.heroBtn.secondary:hover {
+  background: rgba(46, 168, 255, 0.15);
+}
+
+/* SECTION TITLE */
+.sectionTitle {
+  font-size: 32px;
+  margin: 50px 0 25px;
+  text-align: center;
+  color: #2ea8ff;
+}
+
+/* FEATURES */
+.featureGrid {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 280px);
+    gap: 20px;
+}
+
+.featureCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.featureCard:hover {
+    transform: translateY(-5px);
+    border: 1px solid rgba(46, 168, 255, 0.5);
+}
+
+.featureCard h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.featureCard p {
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+/* HOW TO USE */
+.stepsWrapper {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.stepCard {
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stepNumber {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  background: #2ea8ff;
+  margin-bottom: 15px;
+}
+
+/* TECH STACK */
+.techGrid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.techCard {
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: rgba(46, 168, 255, 0.15);
+  border: 1px solid rgba(46, 168, 255, 0.3);
+  font-weight: bold;
+  color: #2ea8ff;
+}
+
+/* CTA */
+.ctaSection {
+  margin-top: 70px;
+  padding: 50px 20px;
+  border-radius: 15px;
+  text-align: center;
+  background: rgba(46, 168, 255, 0.1);
+  border: 1px solid rgba(46, 168, 255, 0.2);
+}
+
+.ctaSection h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.ctaSection p {
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.ctaBtn {
+  padding: 12px 30px;
+  border-radius: 10px;
+  border: none;
+  background: #2ea8ff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ctaBtn:hover {
+  background: #118ae0;
 }

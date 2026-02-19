@@ -81,14 +81,14 @@ const Attendance = () => {
         }
     }, [att]);
 
-    useEffect(()=>{
-        if (rel) {
-            dispatch(reload(false))
+    // useEffect(()=>{
+    //     if (rel) {
+    //         dispatch(reload(false))
             
-        } else {
-            dispatch(reload(true))
-        }
-    },[fdata])
+    //     } else {
+    //         dispatch(reload(true))
+    //     }
+    // },[att,subject])
 
     // This function Can Update Attendance
     const updateAttendance = async (a, scode, pday, aday, tday) => {
