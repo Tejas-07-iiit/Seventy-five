@@ -328,6 +328,7 @@ body {
 .attendance {
     margin-top: 27px;
     width: 100%;
+    transform: transition 0.s ease;
 }
 
 .pannel_title {
@@ -424,11 +425,24 @@ body {
     border-radius: 20px;
     padding: 32px;
     display: grid;
+    animation: fadeIn 0.2s ease-in-out;
     grid-template-columns: 0.5fr 1fr; /* Better balance than flex */
     gap: 40px;
     margin: 30px auto;
     width: 1000px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .edit form {
