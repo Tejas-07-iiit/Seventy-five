@@ -16,7 +16,7 @@ const upload = async (req , res) => {
         await user.findByIdAndUpdate(uid , 
             {profileimage : imagePath}
         )
-
+        
         res.status(200).json({
             message : "Image Uploaded",
             image : imagePath
