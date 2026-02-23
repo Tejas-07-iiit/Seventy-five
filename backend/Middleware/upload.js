@@ -8,6 +8,7 @@ const upload = multer({
     fileSize: 1024 * 1024, 
   },
   fileFilter: (req, file, cb) => {
+    // console.log(file)
     if (file.mimetype.startsWith("image")) {
       cb(null, true);
     } else {

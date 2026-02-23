@@ -8,15 +8,18 @@ const upload = async (req , res) => {
 
         const opath = path.join(__dirname,"../uploads" , `${uid}.webp`)
 
-        await sharp(req.file.buffer).resize(300,300).webp({quality:80}).toFile(opath)
+        const response = await sharp(req.file.buffer).resize(300,300).webp({quality:80}).toFile(opath)
+        console.log(opath)
         
+        const imagePath = `/uploads/${uid}.webp`;
+
         await user.findByIdAndUpdate(uid , 
-            {profileimage : opath}
+            {profileimage : imagePath}
         )
 
         res.status(200).json({
             message : "Image Uploaded",
-            image : opath
+            image : imagePath
         })
 
     } catch (error) {

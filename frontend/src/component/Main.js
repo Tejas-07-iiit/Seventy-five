@@ -182,7 +182,7 @@ const Main = () => {
             <h3>Project</h3>
             <a href="/about">About</a>
             <a href="/contact">Contact</a>
-            <a href="https://github.com/your-github-repo" target="_blank" rel="noreferrer">
+            <a href="https://github.com/Tejas-07-iiit/EduTrack" target="_blank" rel="noreferrer">
               Source Code
             </a>
             <a href="#">Documentation</a>
@@ -190,14 +190,14 @@ const Main = () => {
 
           <div className="footerColumn">
             <h3>Connect</h3>
-            <a href="mailto:yourmail@gmail.com">Email</a>
-            <a href="https://linkedin.com/in/your-link" target="_blank" rel="noreferrer">
+            <a href="mailto:tejas23106@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/tejas-ambaliya/" target="_blank" rel="noreferrer">
               LinkedIn
             </a>
-            <a href="https://github.com/your-github" target="_blank" rel="noreferrer">
+            <a href="https://github.com/Tejas-07-iiit" target="_blank" rel="noreferrer">
               GitHub
             </a>
-            <a href="https://your-portfolio-link.com" target="_blank" rel="noreferrer">
+            <a href="https://tejasambaliya.me/" target="_blank" rel="noreferrer">
               Portfolio
             </a>
           </div>
@@ -207,7 +207,7 @@ const Main = () => {
 
       {/* BOTTOM COPYRIGHT */}
       <div className="footerBottom">
-        <p>© {new Date().getFullYear()} EduTrack | Developed by Your Name</p>
+        <p>© {new Date().getFullYear()} EduTrack | Developed by Tejas Ambaliya</p>
       </div>
     </footer>
 

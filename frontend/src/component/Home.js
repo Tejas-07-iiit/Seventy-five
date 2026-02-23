@@ -49,7 +49,7 @@ const Home = () => {
                 <div className="profilemenu">
                   <div className="pitem">
                     <FontAwesomeIcon style={{color:"black", fontSize:"18px"}} icon={faCircleUser} />
-                    <button>
+                    <button onClick={()=>dispatch(comp("profile"))}>
                       Profile
                     </button>
                   </div>

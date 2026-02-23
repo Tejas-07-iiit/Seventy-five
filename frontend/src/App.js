@@ -13,6 +13,7 @@ import Subject from './component/Subject';
 import Attendance from './component/Attendance';
 import Main from './component/Main';
 import Login from './component/Login';
+import Profile from './component/Profile';
 
 function App() {
     const dispatch = useDispatch();
@@ -50,10 +51,10 @@ function App() {
         
         {comp === "signin" && <Login/>}
         <div className="mainbody">
-         {auth && 
-            <Side_pannel/> }
+         {auth && <Side_pannel/> }
           {auth && <Subject/> }
           {auth && <Attendance/>}
+          <Profile/>
         </div>
       </>
   );

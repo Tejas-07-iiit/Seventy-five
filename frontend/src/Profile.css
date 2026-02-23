@@ -64,3 +64,13 @@
   position: fixed;
   z-index: 10;
 }
+
+.pic {
+  height: 200px;
+  width: 200px;
+  color: white;
+}
+
+.pic:hover {
+  color: rgba(255, 255, 255, 0.511);
+}
