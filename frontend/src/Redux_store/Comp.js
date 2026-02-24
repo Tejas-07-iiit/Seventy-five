@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const ComponentSlice = createSlice({
   name: "comp",
   initialState: {
-    comp: "homePage"
+    comp: "profile"
   },
   reducers: {
     comp : (state, action) => {

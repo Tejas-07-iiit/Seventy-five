@@ -16,16 +16,21 @@ const Profile = () => {
   // fetch profile detail 
  
     const dt = async () => {
-      if(user !== 0) {
-        const response = await axios.post("http://localhost:5000/api/prrofile" , {} , {
-          withCredentials:true
-        })
-
-        setfname(response.data.f_name + " " + response.data.l_name)
-        setmail(response.data.email)
-        // console.log(response.data , "i am data")
-        }
+      try {
+        
+        if(user !== 0) {
+          const response = await axios.post("http://localhost:5000/api/prrofile" , {} , {
+            withCredentials:true
+          })
+    
+          setfname(response.data.f_name + " " + response.data.l_name)
+          setmail(response.data.email)
+          // console.log(response.data , "i am data")
+          }
+      } catch (error) {
+        console.log("something went wrong : " , error.message)
       }
+    }
       dt()
   
 

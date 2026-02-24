@@ -6,7 +6,7 @@ const Auth = require("../Middleware/Auth")
 router.post("/prrofile" , Auth ,async (req,res)=> {
     try {
         const response = await usr.findById(req.user.userId)
-        console.log(response)
+        // console.log(response)
         res.status(200).json(response)
 
     } catch (error) {

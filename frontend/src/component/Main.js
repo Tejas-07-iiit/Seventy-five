@@ -149,21 +149,14 @@ const Main = () => {
 
           {/* SOCIAL ICONS */}
           <div className="socialIcons">
-            <a href="https://linkedin.com/in/your-link" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/in/tejas-ambaliya/" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
 
-            <a href="https://github.com/your-github" target="_blank" rel="noreferrer">
+            <a href="https://github.com/Tejas-07-iiit" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faGithub} />
             </a>
 
-            <a href="https://instagram.com/your-instagram" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-
-            <a href="https://twitter.com/your-twitter" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
           </div>
         </div>
 
@@ -171,21 +164,10 @@ const Main = () => {
         <div className="footerRight">
 
           <div className="footerColumn">
-            <h3>Quick Links</h3>
-            <a href="/">Home</a>
-            <a href="/dashboard">Dashboard</a>
-            <a href="/attendance">Attendance</a>
-            <a href="/addsubject">Add Subject</a>
-          </div>
-
-          <div className="footerColumn">
             <h3>Project</h3>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
             <a href="https://github.com/Tejas-07-iiit/EduTrack" target="_blank" rel="noreferrer">
               Source Code
             </a>
-            <a href="#">Documentation</a>
           </div>
 
           <div className="footerColumn">
