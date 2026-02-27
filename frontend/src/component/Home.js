@@ -74,10 +74,10 @@ const Home = () => {
           <div className="menu">
 
               <div className="item">
-                <a href="/">About</a>
+                <a to="/">About</a>
               </div>
               <div className="item">
-                <a href="/">Contact</a>
+                <a to="/">Contact</a>
               </div>
 
               <div className="profile">
